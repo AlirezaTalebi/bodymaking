@@ -11,4 +11,6 @@ return [
     'remember_me' =>'Remember me',
     'forgot_password' =>'Forgot your password',
     'reset_password' =>'Reset password',
+    'already_registered' =>'Already registered?',
+    'confirm_password' =>'Confirm password',
 ];
