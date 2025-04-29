@@ -33,7 +33,7 @@
                 <!-- Trigger button -->
                 <button @click="open = !open"
                         type="button"
-                        class="border-gray-300 focus:border-custom_yellow focus:ring-custom_yellow rounded-md bg-white w-full flex justify-between items-center px-4 py-2.5">
+                        class="border-gray-300 focus:border-custom_yellow focus:ring-custom_yellow hover:text-custom_purple rounded-md bg-white w-full flex justify-between items-center px-4 py-2.5">
                     <span x-text="selected" class="text-left"></span>
                     <svg class="w-4 h-4 rtl:rotate-180" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -51,7 +51,7 @@
                             <li>
                                 <button type="button"
                                         @click="selected = '{{ __("general.$gender") }}'; open = false; $refs.gender.value = '{{ $gender }}'"
-                                        class="w-full text-left px-4 py-2 hover:underline">
+                                        class="w-full text-left px-4 py-2 hover:underline hover:decoration-custom_purple hover:text-custom_purple">
                                     {{ __("general.$gender") }}
                                 </button>
                             </li>
