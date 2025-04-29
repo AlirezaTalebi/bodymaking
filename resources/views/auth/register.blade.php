@@ -1,10 +1,10 @@
 @php
     use App\Models\User;
 @endphp
+
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('general.name')" />
@@ -33,7 +33,7 @@
                 <!-- Trigger button -->
                 <button @click="open = !open"
                         type="button"
-                        class="border-gray-300 focus:border-custom_yellow focus:ring-custom_yellow hover:text-custom_purple rounded-md bg-white w-full flex justify-between items-center px-4 py-2.5">
+                        class="border-gray-300 mt-1 focus:border-custom_yellow focus:ring-custom_yellow hover:text-custom_purple rounded-md bg-white w-full flex justify-between items-center px-4 py-2.5">
                     <span x-text="selected" class="text-left"></span>
                     <svg class="w-4 h-4 rtl:rotate-180" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -47,7 +47,7 @@
                      class="absolute z-50 mt-1 w-full rounded-md bg-white"
                      style="display: none;">
                     <ul class="py-1 text-sm text-gray-900">
-                        @foreach (User::gender() as $gender)
+                        @foreach (User::getGender() as $gender)
                             <li>
                                 <button type="button"
                                         @click="selected = '{{ __("general.$gender") }}'; open = false; $refs.gender.value = '{{ $gender }}'"

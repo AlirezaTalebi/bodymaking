@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property string $name
+ * @property string $email
+ * @property string $gender
+ * @property int $age
+ * @method array getGender()
+ */
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -19,6 +27,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'gender',
+        'age',
         'email',
         'password',
     ];
@@ -46,7 +56,10 @@ class User extends Authenticatable
         ];
     }
 
-    static function gender()
+    /**
+     * @return array
+     */
+    public static function getGender(): array
     {
         return [
             'male',

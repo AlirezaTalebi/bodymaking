@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->integer('age');
             $table->float('height')->nullable();
             $table->float('weight')->nullable();
-            $table->enum('gender', \App\Models\User::gender())->default('prefer not to say');
+            $table->enum('gender', User::getGender())->default('prefer not to say');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
