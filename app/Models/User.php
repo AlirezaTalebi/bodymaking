@@ -45,4 +45,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    static function gender()
+    {
+        return [
+            'male',
+            'female',
+            'non-binary',
+            'transgender',
+            'genderqueer',
+            'agender',
+            'prefer not to say',
+            'other'
+        ];
+    }
 }
