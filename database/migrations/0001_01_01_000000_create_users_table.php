@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('language')->default('en');
             $table->integer('age');
-            $table->float('height');
-            $table->float('weight');
+            $table->float('height')->nullable();
+            $table->float('weight')->nullable();
             $table->enum('gender', \App\Models\User::gender())->default('prefer not to say');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
