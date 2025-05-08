@@ -92,12 +92,12 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-buttons.primary-a-button href="{{ route('login') }}">
+        <div class="flex items-center mt-4 justify-end">
+            <x-buttons.primary-a-button class="ml-0 mr-0" :margin="true" href="{{ route('login') }}">
                 {{ __('general.already_registered') }}
             </x-buttons.primary-a-button>
 
-            <x-buttons.primary-button>
+            <x-buttons.primary-button :margin="true">
                 {{ __('general.register') }}
             </x-buttons.primary-button>
         </div>
