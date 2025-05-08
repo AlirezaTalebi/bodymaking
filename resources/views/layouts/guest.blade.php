@@ -22,6 +22,26 @@
                 </a>
             </div>
 
+            {{-- Language Icon --}}
+
+            <div x-data="{ langMenu: false }" class="fixed right-2 top-2 text-custom_purple">
+                <div @click="langMenu = !langMenu" class="cursor-pointer">
+                    <i class="fa-solid fa-earth text-2xl"></i>
+                </div>
+
+                <div
+                    x-show="langMenu"
+                    x-cloak
+                    x-transition
+                    class="fixed right-2 top-10 bg-white shadow-md rounded mt-2"
+                >
+                    <ul class="py-1 text-sm text-gray-900">
+                        <li class="w-full text-left px-4 py-2 hover:underline hover:decoration-custom_purple hover:text-custom_purple"><a href="{{ route('lang', 'fa') }}">فارسی</a></li>
+                        <li class="w-full text-left px-4 py-2 hover:underline hover:decoration-custom_purple hover:text-custom_purple"><a href="{{ route('lang', 'en') }}">English</a></li>
+                    </ul>
+                </div>
+            </div>
+
             <div class="flex items-center justify-center sm:w-full">
                 <div class="w-full items-center mx-auto sm:max-w-md mt-6 px-6 py-4 bg-custom_purple shadow-2xl rounded-lg">
                     {{ $slot }}
