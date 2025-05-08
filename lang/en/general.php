@@ -2,7 +2,7 @@
 
 return [
     'login' =>'Login',
-    'logout' =>'Logout',
+    'logout' =>'Log out',
     'register' =>'Register',
     'home' =>'Home',
     'profile' =>'Profile',

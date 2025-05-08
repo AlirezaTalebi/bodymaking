@@ -23,4 +23,6 @@ return [
     'agender' => 'بی‌جنسیت',
     'prefer not to say' => 'ترجیح می‌دهم نگویم',
     'other' => 'سایر',
+    'name' => 'نام',
+    'age' => 'سن',
 ];
