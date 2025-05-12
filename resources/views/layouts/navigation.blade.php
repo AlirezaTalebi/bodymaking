@@ -108,10 +108,19 @@
             <x-application-logo class="h-5 w-10 fill-current text-white"/>
         </button>
     </div>
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-start">
         <ul class="p-4">
             <li>
-                <form method="POST" action="{{ route('logout') }}">
+              <div class="flex items-center justify-start">
+                  <x-buttons.primary-a-button class="block py-2 w-full" href="{{ route('profile.edit') }}">
+                    <span class="text-3xl sm:text-2xl">
+                        {{ __('general.profile') }}
+                    </span>
+                  </x-buttons.primary-a-button>
+              </div>
+            </li>
+            <li>
+                <form class="flex items-center justify-start" method="POST" action="{{ route('logout') }}">
                     @csrf
                     <x-buttons.primary-button class="block py-2 w-full">
                         <span class="text-3xl sm:text-2xl">
@@ -119,13 +128,6 @@
                         </span>
                     </x-buttons.primary-button>
                 </form>
-            </li>
-            <li>
-                <x-buttons.primary-a-button href="{{ route('profile.edit') }}">
-                    <span class="text-3xl sm:text-2xl">
-                        {{ __('general.profile') }}
-                    </span>
-                </x-buttons.primary-a-button>
             </li>
         </ul>
     </div>
