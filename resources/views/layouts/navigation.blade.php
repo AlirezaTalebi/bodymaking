@@ -134,9 +134,25 @@
 </nav>
 
 <div :class="{'opacity-0 invisible': openMenu, 'opacity-100 visible': !openMenu}"
-     class="bg-custom_yellow fixed top-3 transition-opacity duration-500 ease-in-out pl-2">
+     class="fixed top-3 ml-2 transition-opacity duration-500 ease-in-out z-50" id="logo">
     <button @click="openMenu = !openMenu"
-            class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out">
+            class="inline-flex items-center justify-center p-2 bg-custom_yellow rounded-md focus:outline-none transition duration-150 ease-in-out">
         <x-application-logo class="h-5 w-10 fill-current text-custom_purple"/>
     </button>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const logo = document.getElementById('logo');
+        const threshold = 20;
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > threshold) {
+                logo.style.opacity = "80%";
+            } else {
+                logo.style.opacity = "100%";
+            }
+        });
+
+    })
+</script>
