@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'login' => 'Anmelden',
+    'logout' => 'Abmelden',
+    'register' => 'Registrieren',
+    'home' => 'Startseite',
+    'profile' => 'Profil',
+    'password' => 'Passwort',
+    'email' => 'E-Mail',
+    'name' => 'Name',
+    'age' => 'Alter',
+    'gender' => 'Geschlecht',
+    'remember_me' => 'Angemeldet bleiben',
+    'forgot_password' => 'Passwort vergessen?',
+    'reset_password' => 'Passwort zurücksetzen',
+    'already_registered' => 'Bereits registriert?',
+    'confirm_password' => 'Passwort bestätigen',
+    'select_gender' => 'Geschlecht auswählen',
+    'male' => 'Männlich',
+    'female' => 'Weiblich',
+    'non-binary' => 'Nicht-binär',
+    'transgender' => 'Transgender',
+    'genderqueer' => 'Genderqueer',
+    'agender' => 'Agender',
+    'prefer not to say' => 'Möchte ich nicht angeben',
+    'other' => 'Andere',
+];
