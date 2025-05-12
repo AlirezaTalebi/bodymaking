@@ -36,8 +36,9 @@
                     class="fixed right-2 top-10 bg-white shadow-md rounded mt-2"
                 >
                     <ul class="py-1 text-sm text-gray-900">
-                        <li class="w-full text-left px-4 py-2 hover:underline hover:decoration-custom_purple hover:text-custom_purple"><a href="{{ route('lang', 'fa') }}">فارسی</a></li>
-                        <li class="w-full text-left px-4 py-2 hover:underline hover:decoration-custom_purple hover:text-custom_purple"><a href="{{ route('lang', 'en') }}">English</a></li>
+                        @foreach(\App\Models\Language::getAvailableLanguages() as $key => $value)
+                            <li class="w-full text-left px-4 py-2 hover:underline hover:decoration-custom_purple hover:text-custom_purple"><a href="{{ route('lang', $key) }}">{{ $value }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
