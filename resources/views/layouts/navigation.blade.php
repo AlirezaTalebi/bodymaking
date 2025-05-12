@@ -111,6 +111,15 @@
     <div class="flex items-center justify-start">
         <ul class="p-4">
             <li>
+                <div class="flex items-center justify-start">
+                    <x-buttons.primary-a-button class="block py-2 w-full" href="{{ route('dashboard') }}">
+                    <span class="text-3xl sm:text-2xl">
+                        {{ __('general.home') }}
+                    </span>
+                    </x-buttons.primary-a-button>
+                </div>
+            </li>
+            <li>
               <div class="flex items-center justify-start">
                   <x-buttons.primary-a-button class="block py-2 w-full" href="{{ route('profile.edit') }}">
                     <span class="text-3xl sm:text-2xl">
@@ -120,14 +129,16 @@
               </div>
             </li>
             <li>
-                <form class="flex items-center justify-start" method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <x-buttons.primary-button class="block py-2 w-full">
+                <div class="flex items-center justify-start" >
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-buttons.primary-button class="block py-2 w-full">
                         <span class="text-3xl sm:text-2xl">
                             {{ __('general.logout') }}
                         </span>
-                    </x-buttons.primary-button>
-                </form>
+                        </x-buttons.primary-button>
+                    </form>
+                </div>
             </li>
         </ul>
     </div>
