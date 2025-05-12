@@ -121,7 +121,11 @@
                 </form>
             </li>
             <li>
-
+                <x-buttons.primary-a-button href="{{ route('profile.edit') }}">
+                    <span class="text-3xl sm:text-2xl">
+                        {{ __('general.profile') }}
+                    </span>
+                </x-buttons.primary-a-button>
             </li>
         </ul>
     </div>
