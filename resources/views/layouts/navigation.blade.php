@@ -101,7 +101,7 @@
 
 
 <nav :class="{'opacity-0': !openMenu, 'opacity-100': openMenu}"
-     class="bg-custom_purple min-h-screen fixed w-full text-white transition-opacity duration-500 ease-in-out">
+     class="bg-custom_purple min-h-screen fixed w-full sm:w-[24.99999999%] md:w-[16.99999999%] text-white transition-opacity duration-500 ease-in-out">
     <div class="flex justify-end mr-2 pt-2">
         <button @click="openMenu = !openMenu"
                 class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out">
@@ -114,7 +114,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <x-buttons.primary-button class="block py-2 w-full">
-                        <span class="text-3xl">
+                        <span class="text-3xl sm:text-2xl">
                             {{ __('general.logout') }}
                         </span>
                     </x-buttons.primary-button>

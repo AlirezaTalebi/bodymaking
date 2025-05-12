@@ -14,12 +14,12 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased" x-data="{ openMenu: true }" >
+<body class="font-sans antialiased bg-custom_yellow " x-data="{ openMenu: true }" >
 <!-- Fixed Sidebar -->
 @include('layouts.navigation')
 
 <!-- Main Content -->
-<div class="min-h-screen bg-custom_yellow flex flex-col md:flex-row md:ml-[16.666667%]">
+<div class="min-h-screen flex flex-col md:flex-row" :class="{ 'sm:ml-[24.99999999%] md:ml-[16.99999999%]': openMenu, 'sm:ml-[4%]': !openMenu }">
     <main class="w-full p-4">
         {{ $slot }}
     </main>
