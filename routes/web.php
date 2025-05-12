@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Language;
 use Illuminate\Support\Facades\Route;
 
 //Route::redirect('/', '/login');
@@ -16,7 +17,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/lang/{locale}', function ($locale) {
-    if (array_key_exists($locale, \App\Models\Language::getAvailableLanguages())) {
+    if (array_key_exists($locale, Language::getAvailableLanguages())) {
         Session::put('locale', $locale);
         App::setLocale($locale);
     }
