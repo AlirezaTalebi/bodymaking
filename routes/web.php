@@ -16,7 +16,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/lang/{locale}', function ($locale) {
-    if (in_array($locale, array_keys(\App\Models\Language::getAvailableLanguages()))) {
+    if (array_key_exists($locale, \App\Models\Language::getAvailableLanguages())) {
         Session::put('locale', $locale);
         App::setLocale($locale);
     }
