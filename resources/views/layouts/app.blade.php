@@ -14,7 +14,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased bg-custom_yellow " x-data="{ openMenu: true }" >
+<body class="font-sans antialiased text-white bg-custom_yellow " x-data="{ openMenu: true }" >
 <!-- Fixed Sidebar -->
 @include('layouts.navigation')
 
