@@ -35,14 +35,14 @@
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-                <x-buttons.primary-a-button :margin="true" href="{{ route('password.request') }}">
+                <x-buttons.primary-a-button href="{{ route('password.request') }}">
                     {{ __('general.forgot_password') }}
                 </x-buttons.primary-a-button>
             @endif
-            <x-buttons.primary-button :margin="true" type="submit">
+            <x-buttons.primary-button type="submit">
                 {{ __('general.login') }}
             </x-buttons.primary-button>
-            <x-buttons.primary-a-button :margin="true" href="{{ route('register') }}">
+            <x-buttons.primary-a-button href="{{ route('register') }}">
                 {{ __('general.register') }}
             </x-buttons.primary-a-button>
         </div>

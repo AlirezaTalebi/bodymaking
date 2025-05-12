@@ -100,24 +100,37 @@
 {{--</nav>--}}
 
 
-<nav :class="{'opacity-0': !openMenu, 'opacity-100': openMenu}" class="bg-custom_purple min-h-screen fixed w-full text-white transition-opacity duration-500 ease-in-out">
+<nav :class="{'opacity-0': !openMenu, 'opacity-100': openMenu}"
+     class="bg-custom_purple min-h-screen fixed w-full text-white transition-opacity duration-500 ease-in-out">
     <div class="flex justify-end mr-2 pt-2">
-        <button @click="openMenu = !openMenu" class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out">
+        <button @click="openMenu = !openMenu"
+                class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out">
             <x-application-logo class="h-5 w-10 fill-current text-white"/>
         </button>
     </div>
-    <ul class="p-4">
-        <li>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <x-buttons.primary-button class="block py-2">{{ __('general.logout') }}</x-buttons.primary-button>
-            </form>
-        </li>
-    </ul>
+    <div class="flex items-center justify-center">
+        <ul class="p-4">
+            <li>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <x-buttons.primary-button class="block py-2 w-full">
+                        <span class="text-3xl">
+                            {{ __('general.logout') }}
+                        </span>
+                    </x-buttons.primary-button>
+                </form>
+            </li>
+            <li>
+
+            </li>
+        </ul>
+    </div>
 </nav>
 
-<div :class="{'opacity-0 invisible': openMenu, 'opacity-100 visible': !openMenu}" class="bg-custom_yellow fixed top-3 transition-opacity duration-500 ease-in-out pl-2">
-    <button @click="openMenu = !openMenu" class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out">
+<div :class="{'opacity-0 invisible': openMenu, 'opacity-100 visible': !openMenu}"
+     class="bg-custom_yellow fixed top-3 transition-opacity duration-500 ease-in-out pl-2">
+    <button @click="openMenu = !openMenu"
+            class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out">
         <x-application-logo class="h-5 w-10 fill-current text-custom_purple"/>
     </button>
 </div>

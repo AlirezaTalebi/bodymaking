@@ -93,11 +93,11 @@
         </div>
 
         <div class="flex items-center mt-4 justify-end">
-            <x-buttons.primary-a-button class="ml-0 mr-0" :margin="true" href="{{ route('login') }}">
+            <x-buttons.primary-a-button href="{{ route('login') }}">
                 {{ __('general.already_registered') }}
             </x-buttons.primary-a-button>
 
-            <x-buttons.primary-button :margin="true">
+            <x-buttons.primary-button>
                 {{ __('general.register') }}
             </x-buttons.primary-button>
         </div>
