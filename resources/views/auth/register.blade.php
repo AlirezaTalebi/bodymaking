@@ -54,7 +54,7 @@
                             <li>
                                 <button type="button"
                                         @click="selected = '{{ __("general.$gender") }}'; open = false; $refs.gender.value = '{{ $gender }}'"
-                                        class="w-full {{ app()->isLocale('fa') ? 'text-right ' : 'text-left ' }} px-4 py-2 hover:text-custom_purple hover:underline">
+                                        class="w-full text-left px-4 py-2 hover:text-custom_purple hover:underline">
                                     {{ __("general.$gender") }}
                                 </button>
                             </li>
