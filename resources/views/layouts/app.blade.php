@@ -14,15 +14,32 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased text-white bg-custom_yellow " x-data="{ openMenu: false }" >
-<!-- Fixed Sidebar -->
-@include('layouts.navigation')
 
-<!-- Main Content -->
-<div class="min-h-screen flex flex-col md:flex-row" :class="{ 'sm:ml-[24.99999999%] md:ml-[16.99999999%]': openMenu, 'sm:ml-[4%]': !openMenu }">
-    <main class="w-full p-4">
-        {{ $slot }}
-    </main>
+<body x-data="{ sidebarOpen: false, notificationsOpen: false }"
+      class="font-sans antialiased bg-gradient-to-tr from-gray-950 to-zinc-900 text-gray-100">
+
+<div class="min-h-screen flex flex-col">
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        @include('components.sidebar')
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Top navbar -->
+            <header class="bg-zinc-900 text-yellow-400 border-b border-yellow-400 shadow-sm z-10">
+                @include('layouts.navigation')
+            </header>
+
+            <!-- Page content -->
+            <main class="flex-1 overflow-auto p-6">
+                {{-- Optional: wrap each page's content in a modern container --}}
+                <div class="max-w-7xl mx-auto space-y-6">
+                    {{ $slot }}
+                </div>
+            </main>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>

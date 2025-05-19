@@ -1,11 +1,11 @@
 <section class="space-y-6">
     <header>
-        <h2 class="text-lg font-medium">
-            {{ __('general.delete_account') }}
+        <h2 class="text-lg font-semibold text-white">
+            {{ __('general.delete_account_confirmation') }}
         </h2>
 
-        <p class="mt-1 text-sm">
-            {{ __('general.delete_account_warning') }}
+        <p class="mt-1 text-sm text-gray-300">
+            {{ __('general.delete_account_password_warning') }}
         </p>
     </header>
 

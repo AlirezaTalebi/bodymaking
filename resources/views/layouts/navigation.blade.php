@@ -1,67 +1,53 @@
-<nav :class="{'opacity-0': !openMenu, 'opacity-100': openMenu}"
-     class="bg-custom_purple min-h-screen fixed w-full sm:w-[24.99999999%] md:w-[16.99999999%] text-white transition-opacity duration-500 ease-in-out">
-    <div class="flex justify-end mr-2 pt-2">
-        <button @click="openMenu = !openMenu"
-                class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out">
-            <x-application-logo class="h-5 w-10 fill-current text-white"/>
-        </button>
-    </div>
-    <div class="flex items-center justify-start">
-        <ul class="p-4">
-            <li>
-                <div class="flex items-center justify-start">
-                    <x-buttons.primary-a-button class="block py-2 w-full" href="{{ route('dashboard') }}">
-                    <span class="text-3xl sm:text-2xl">
-                        {{ __('general.home') }}
-                    </span>
-                    </x-buttons.primary-a-button>
-                </div>
-            </li>
-            <li>
-              <div class="flex items-center justify-start">
-                  <x-buttons.primary-a-button class="block py-2 w-full" href="{{ route('profile.edit') }}">
-                    <span class="text-3xl sm:text-2xl">
-                        {{ __('general.profile') }}
-                    </span>
-                  </x-buttons.primary-a-button>
-              </div>
-            </li>
-            <li>
-                <div class="flex items-center justify-start" >
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <x-buttons.primary-button class="block py-2 w-full">
-                        <span class="text-3xl sm:text-2xl">
-                            {{ __('general.logout') }}
-                        </span>
-                        </x-buttons.primary-button>
-                    </form>
-                </div>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<div :class="{'opacity-0 invisible': openMenu, 'opacity-100 visible': !openMenu}"
-     class="fixed top-3 ml-2 transition-opacity duration-500 ease-in-out z-50" id="logo">
-    <button @click="openMenu = !openMenu"
-            class="inline-flex items-center justify-center p-2 bg-custom_yellow rounded-md focus:outline-none transition duration-150 ease-in-out">
-        <x-application-logo class="h-5 w-10 fill-current text-custom_purple"/>
+<div class="flex items-center justify-between px-4 py-2.5 bg-zinc-900 text-yellow-400 border-b border-yellow-400">
+    <!-- Hamburger menu (mobile) -->
+    <button
+        @click="sidebarOpen = !sidebarOpen"
+        class="text-yellow-400 hover:text-yellow-300 focus:outline-none"
+        x-data
+    >
+        <i class="fas fa-bars text-lg"></i>
     </button>
+
+    <!-- Right side navbar items -->
+    <div class="flex items-center space-x-4">
+        <!-- Notifications -->
+        <div class="relative" x-data="{ notificationsOpen: false }">
+            <button
+                @click="notificationsOpen = !notificationsOpen"
+                class="relative text-yellow-400 hover:text-yellow-300 focus:outline-none"
+            >
+                <i class="fas fa-bell text-lg"></i>
+                <span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-red-500"></span>
+            </button>
+
+            <!-- Dropdown -->
+            <div
+                x-show="notificationsOpen"
+                @click.away="notificationsOpen = false"
+                x-transition
+                class="absolute right-0 mt-2 w-80 bg-zinc-800 text-gray-200 rounded-md shadow-lg py-1 z-50"
+            >
+                <div class="px-4 py-2 border-b border-zinc-700 text-yellow-300">
+                    <p class="font-medium">Notifications</p>
+                </div>
+                <div class="px-4 py-2 text-sm text-gray-400">
+                    No new notifications
+                </div>
+            </div>
+        </div>
+
+        <!-- User profile -->
+        <div class="hidden md:flex items-center bg-zinc-800 rounded-md px-3 py-1.5">
+            <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden border-2 border-yellow-400">
+                    <img src="{{ Auth::user()->profile_photo_url ?? asset('https://picsum.photos/200/300') }}"
+                         alt="{{ Auth::user()->name ?? 'User' }}" class="w-full h-full object-cover">
+                </div>
+                <div x-show="sidebarOpen" class="ml-3">
+                    <p class="text-sm font-medium text-white">{{ Auth::user()->name ?? 'User' }}</p>
+                    <p class="text-xs text-yellow-300">{{ Auth::user()->role ?? 'Member' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const logo = document.getElementById('logo');
-        const threshold = 20;
-
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > threshold) {
-                logo.style.opacity = "80%";
-            } else {
-                logo.style.opacity = "100%";
-            }
-        });
-
-    })
-</script>
