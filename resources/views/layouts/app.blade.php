@@ -21,7 +21,7 @@
 <div class="min-h-screen flex flex-col">
     <div class="flex flex-1 overflow-hidden">
         <!-- Sidebar -->
-        @include('components.sidebar')
+        @include('layouts.sidebar')
 
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden">
