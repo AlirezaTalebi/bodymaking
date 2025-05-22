@@ -1,4 +1,4 @@
-<div class="relative z-30">
+<div class="relative z-30" x-cloak>
     {{-- Mobile Overlay --}}
     <div
         x-show="sidebarOpen"
@@ -15,13 +15,14 @@
             'w-64': sidebarOpen,
             'w-64 lg:w-20': !sidebarOpen
         }"
+        x-cloak
         class="fixed lg:relative h-full bg-gradient-to-b from-zinc-900 to-gray-800 text-white transition-all duration-300 ease-in-out shadow-xl z-30"
     >
         {{-- Logo section --}}
-        <div class="flex items-center justify-between p-4 border-b border-yellow-400">
+        <div class="flex items-center justify-between p-4 border-b-2 border-r border-yellow-400">
             <div class="flex items-center">
-                <div class="w-10 h-10 rounded-full bg-yellow-400 bg-opacity-20 flex items-center justify-center">
-                    <span class="text-lg font-bold text-yellow-300">{{ config('app.name')[0] ?? 'L' }}</span>
+                <div class="w-10 h-10 bg-opacity-20 flex items-center justify-center">
+                    <x-application-logo class="h-4 w-16 fill-current text-yellow-400"/>
                 </div>
                 <span x-show="sidebarOpen" class="ml-3 font-semibold text-lg text-yellow-300">
                     {{ config('app.name', 'Laravel') }}
@@ -53,14 +54,17 @@
 
                 {{-- Profile --}}
                 <li>
-                    <a href="{{ route('profile.edit') }}"
-                       class="flex items-center px-4 py-3 transition-all duration-200
-                       {{ request()->routeIs('profile.edit') ? 'bg-yellow-400 bg-opacity-20 border-r-4 border-yellow-400' : 'hover:bg-yellow-400 hover:bg-opacity-10' }}"
-                       x-bind:class="{ 'justify-center': !sidebarOpen }"
+                    <a
+                        href="{{ route('profile.edit') }}"
+                        @click="sidebarOpen = false"
+                        class="flex items-center px-4 py-3 transition-all duration-200
+        {{ request()->routeIs('profile.edit') ? 'bg-yellow-400 bg-opacity-20 border-r-4 border-yellow-400' : 'hover:bg-yellow-400 hover:bg-opacity-10' }}"
+                        x-bind:class="{ 'justify-center': !sidebarOpen }"
                     >
                         <i class="fas fa-user text-yellow-400 text-lg"></i>
                         <span x-show="sidebarOpen" class="ml-4 text-yellow-300">Profile</span>
                     </a>
+
                 </li>
 
                 {{-- Settings --}}
