@@ -11,6 +11,7 @@ class Calendar extends Component
     public $selectedDate;
     public $showMonthPicker = false;
     public $monthPickerDate;
+    public $viewName = 'livewire.calendar';
 
     // For future task functionality
     public $tasksData = []; // Will contain dates with tasks
@@ -122,8 +123,9 @@ class Calendar extends Component
         return in_array($date->format('Y-m-d'), $this->tasksData);
     }
 
+
     public function render()
     {
-        return view('livewire.calendar');
+        return view($this->viewName);
     }
 }
