@@ -37,7 +37,7 @@
         </div>
 
         <!-- User profile -->
-        <div class="hidden md:flex items-center bg-zinc-800 rounded-md px-3 py-1.5">
+        <div class="hidden md:flex items-center rounded-md px-3 py-1.5">
             <div class="flex items-center">
                 <div class="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden border-2 border-yellow-400">
                     <img src="{{ Auth::user()->profile_photo_url ?? asset('https://picsum.photos/200/300') }}"
