@@ -34,6 +34,11 @@
             <main class="flex-1 overflow-auto p-6">
                 {{-- Optional: wrap each page's content in a modern container --}}
                 <div class="max-w-7xl mx-auto space-y-6">
+                    <x-slot name="header">
+                        @if(isset($header))
+                            {{ $header }}
+                        @endif
+                    </x-slot>
                     {{ $slot }}
                 </div>
             </main>
