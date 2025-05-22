@@ -32,7 +32,7 @@
             </header>
 
             <!-- Page content -->
-            <main class="flex-1 overflow-auto p-6">
+            <main class="flex-1 overflow-auto sm:p-6 p-2">
                 {{-- Optional: wrap each page's content in a modern container --}}
                 <div class="max-w-7xl mx-auto space-y-6">
                     <x-slot name="header">
