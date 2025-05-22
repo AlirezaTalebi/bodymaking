@@ -29,9 +29,9 @@
                 </span>
             </div>
             <button
-                @click="sidebarOpen = false"
-                class="lg:hidden text-yellow-400 hover:text-yellow-300 focus:outline-none"
-                x-show="sidebarOpen"
+                    @click="sidebarOpen = false"
+                    class="lg:hidden text-yellow-400 hover:text-yellow-300 focus:outline-none"
+                    x-show="sidebarOpen"
             >
                 <i class="fas fa-times text-xl"></i>
             </button>
@@ -48,35 +48,23 @@
                        x-bind:class="{ 'justify-center': !sidebarOpen }"
                     >
                         <i class="fas fa-home text-yellow-400 text-lg"></i>
-                        <span x-show="sidebarOpen" class="ml-4 text-yellow-300">Dashboard</span>
+                        <span x-show="sidebarOpen" class="ml-4 text-yellow-300">{{ __('general.dashboard') }}</span>
                     </a>
                 </li>
 
                 {{-- Profile --}}
                 <li>
                     <a
-                        href="{{ route('profile.edit') }}"
-                        @click="sidebarOpen = false"
-                        class="flex items-center px-4 py-3 transition-all duration-200
+                            href="{{ route('profile.edit') }}"
+                            @click="sidebarOpen = false"
+                            class="flex items-center px-4 py-3 transition-all duration-200
         {{ request()->routeIs('profile.edit') ? 'bg-yellow-400 bg-opacity-20 border-r-4 border-yellow-400' : 'hover:bg-yellow-400 hover:bg-opacity-10' }}"
-                        x-bind:class="{ 'justify-center': !sidebarOpen }"
+                            x-bind:class="{ 'justify-center': !sidebarOpen }"
                     >
                         <i class="fas fa-user text-yellow-400 text-lg"></i>
-                        <span x-show="sidebarOpen" class="ml-4 text-yellow-300">Profile</span>
+                        <span x-show="sidebarOpen" class="ml-4 text-yellow-300">{{ __('general.profile') }}</span>
                     </a>
 
-                </li>
-
-                {{-- Settings --}}
-                <li>
-                    <a href="{{ route('dashboard') }}"
-                       class="flex items-center px-4 py-3 transition-all duration-200
-                       {{ request()->routeIs('settings') ? 'bg-yellow-400 bg-opacity-20 border-r-4 border-yellow-400' : 'hover:bg-yellow-400 hover:bg-opacity-10' }}"
-                       x-bind:class="{ 'justify-center': !sidebarOpen }"
-                    >
-                        <i class="fas fa-cog text-yellow-400 text-lg"></i>
-                        <span x-show="sidebarOpen" class="ml-4 text-yellow-300">Settings</span>
-                    </a>
                 </li>
 
                 {{-- Logout --}}
@@ -89,7 +77,7 @@
                             x-bind:class="{ 'justify-center': !sidebarOpen }"
                         >
                             <i class="fas fa-sign-out-alt text-yellow-400 text-lg"></i>
-                            <span x-show="sidebarOpen" class="ml-4 text-yellow-300">Logout</span>
+                            <span x-show="sidebarOpen" class="ml-4 text-yellow-300">{{ __('general.logout') }}</span>
                         </button>
                     </form>
                 </li>
