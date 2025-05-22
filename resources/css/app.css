@@ -7,3 +7,13 @@
 [x-cloak] {
     display: none !important;
 }
+html {
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: white;
+        color: black;
+    }
+}
