@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->enum('type', \App\Models\Exercise::getAvailableExerciseTypes())->default('other');
             $table->string('equipment');
+            $table->string('muscle_group');
             $table->timestamps();
         });
     }

@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->float('height')->nullable();
             $table->float('weight')->nullable();
             $table->float('goal_weight')->nullable();

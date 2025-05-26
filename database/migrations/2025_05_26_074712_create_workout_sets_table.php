@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreign('workout_sessions_id')->references('id')->on('workout_sessions');
             $table->unsignedBigInteger('exercises_id');
             $table->foreign('exercises_id')->references('id')->on('exercises');
-            $table->integer('reps');
-            $table->integer('weight');
-            $table->integer('set_number');
+            $table->integer('reps')->nullable();
+            $table->integer('weight')->nullable();
+            $table->integer('set_number')->nullable();
             $table->integer('duration_sec')->nullable(); // for cardio
             $table->timestamps();
         });
