@@ -19,7 +19,6 @@ class BodyMetricFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => UserFactory::create(),
             'date' => fake()->date(),
             'body_fat' => fake()->numberBetween(1, 80),
             'muscle_mass' => fake()->numberBetween(1, 80),

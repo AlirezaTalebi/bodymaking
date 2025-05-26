@@ -17,7 +17,6 @@ class WorkoutSessionFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => UserFactory::create(),
             'date' => fake()->date(),
             'duration' => fake()->numberBetween(1, 180),
             'notes' => fake()->text(),

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Exercise;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +19,8 @@ class WorkoutSetFactory extends Factory
     {
         $temp = fake()->randomElement(['c', 'w', 'w']);
         $array = [
-            'workout_session_id' => WorkoutSessionFactory::create(),
-            'exercise_id' => ExerciseFactory::create(),
+//            'workout_session_id' => WorkoutSessionFactory::create(),
+            'exercise_id' => Exercise::factory(),
         ];
 
         if ($temp === 'c') {

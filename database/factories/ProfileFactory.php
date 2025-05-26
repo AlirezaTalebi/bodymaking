@@ -17,7 +17,6 @@ class ProfileFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => UserFactory::create(),
             'height' => fake()->numberBetween(150, 250),
             'weight' => fake()->numberBetween(50, 150),
             'goal_weight' => fake()->numberBetween(50, 150),
