@@ -1,6 +1,7 @@
-<div class="calendar-wrapper bg-gradient-to-br from-zinc-900 to-gray-800 rounded-lg p-4 max-w-4xl mx-auto text-white">
+<div class="calendar-wrapper max-w-4xl mx-auto text-white">
     <!-- Week Navigation Bar -->
-    <div class="calendar-week-bar sm:flex flex-wrap sm:flex-nowrap items-center justify-center sm:justify-between gap-3 mb-6 bg-zinc-800 rounded-lg p-3 border border-zinc-700">
+    <div
+        class="calendar-week-bar sm:flex flex-wrap sm:flex-nowrap items-center justify-center sm:justify-between gap-3 mb-6 bg-zinc-800 rounded-lg p-3 border border-zinc-700">
         <!-- Previous Week Button -->
         <button wire:click="previousWeek"
                 class="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-700 hover:bg-yellow-400 text-yellow-400 hover:text-zinc-900 transition duration-200">
@@ -37,15 +38,19 @@
 
     <!-- Month Picker Modal -->
     @if($showMonthPicker)
-        <div class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 px-4" wire:click="toggleMonthPicker">
-            <div class="bg-zinc-900 text-white rounded-xl shadow-2xl p-4 sm:p-6 max-w-md w-full mx-auto" wire:click.stop>
+        <div class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 px-4"
+             wire:click="toggleMonthPicker">
+            <div class="bg-zinc-900 text-white rounded-xl shadow-2xl p-4 sm:p-6 max-w-md w-full mx-auto"
+                 wire:click.stop>
                 <!-- Header -->
                 <div class="flex items-center justify-between mb-4">
-                    <button wire:click="previousMonth" class="w-8 h-8 bg-zinc-700 hover:bg-yellow-400 text-yellow-400 hover:text-zinc-900 rounded-full flex items-center justify-center">
+                    <button wire:click="previousMonth"
+                            class="w-8 h-8 bg-zinc-700 hover:bg-yellow-400 text-yellow-400 hover:text-zinc-900 rounded-full flex items-center justify-center">
                         <i class="fas fa-chevron-left"></i>
                     </button>
                     <h3 class="text-lg font-bold">{{ $monthPickerDate->format('F Y') }}</h3>
-                    <button wire:click="nextMonth" class="w-8 h-8 bg-zinc-700 hover:bg-yellow-400 text-yellow-400 hover:text-zinc-900 rounded-full flex items-center justify-center">
+                    <button wire:click="nextMonth"
+                            class="w-8 h-8 bg-zinc-700 hover:bg-yellow-400 text-yellow-400 hover:text-zinc-900 rounded-full flex items-center justify-center">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
