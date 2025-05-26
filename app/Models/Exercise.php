@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Exercise extends Model
 {
@@ -13,7 +14,12 @@ class Exercise extends Model
     public static function getAvailableExerciseTypes(): array
     {
         return [
-            ['cardio', 'strength', 'endurance', 'weight lifting', 'other']
+            'cardio', 'strength', 'endurance', 'weight lifting', 'other'
         ];
+    }
+
+    public function workoutSets(): hasMany
+    {
+        return $this->hasMany(WorkoutSet::class);
     }
 }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -71,5 +73,30 @@ class User extends Authenticatable
             'prefer not to say',
             'other'
         ];
+    }
+
+    public function profile(): hasOne
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function workoutSessions(): hasMany
+    {
+        return $this->hasMany(WorkoutSession::class);
+    }
+
+    public function calories(): hasMany
+    {
+        return $this->hasMany(Calory::class);
+    }
+
+    public function meals(): HasMany
+    {
+        return $this->hasMany(Meal::class);
+    }
+
+    public function bodyMetrics(): HasMany
+    {
+        return $this->hasMany(Meal::class);
     }
 }
