@@ -12,9 +12,13 @@
         <div class="calendar-week-days flex gap-1 overflow-x-auto sm:overflow-visible flex-1 justify-center">
             @foreach($this->weekDays as $index => $day)
                 <button
-                    x-data="{ hovered: false }"
+                    x-data="{
+                    hovered: false,
+                    isSelected: '{{ $day->isSameDay($selectedDate) ? 'true' : 'false' }}' === 'true'
+                     }"
                     x-on:mouseenter="hovered = true"
                     x-on:mouseleave="hovered = false"
+
                     wire:click="selectDay({{ $index }})"
                         class="relative flex flex-col items-center px-2 py-2 rounded-md transition-all duration-200 text-xs sm:text-sm font-medium min-w-[3.5rem]
                         {{ $day->isSameDay($selectedDate)
@@ -25,8 +29,8 @@
                     <span class="flex text-base font-bold">{{ $day->format('j') }}
                         @if(in_array($day->format('Y-m-d'), $workoutSessionDays))
                             <x-application-logo
-                                x-bind:class="{'text-yellow-400': !hovered, 'text-zinc-900': hovered} "
-                                class="absolute bottom-0.5 right-1 h-2 w-4 fill-current text-yellow-400"/>
+                                x-bind:class="{'text-yellow-400': !hovered and !isSelected, 'text-zinc-900': hovered or isSelected } "
+                                class="absolute bottom-0.5 right-1 h-2 w-4 fill-current"/>
                         @endif
                     </span>
                 </button>
@@ -77,7 +81,13 @@
                     @foreach($this->monthDays as $week)
                         <div class="grid grid-cols-7 gap-1">
                             @foreach($week as $dayData)
-                                <button x-data="{ hovered: false }"
+                                <button
+                                    x-data="{
+                                hovered: false,
+                                isToday: {{ json_encode($dayData['isToday']) }},
+                                isCurrentMonth: {{ json_encode($dayData['isCurrentMonth']) }}
+
+                                 }"
                                         x-on:mouseenter="hovered = true"
                                         x-on:mouseleave="hovered = false"
                                         wire:click="selectMonthDay({{ $dayData['date']->day }})"
@@ -89,7 +99,7 @@
                                     @if($dayData['hasWorkoutSession'])
                                         <span class="absolute bottom-1 ">
                                             <x-application-logo
-                                                x-bind:class="{'text-yellow-400': !hovered, 'text-white': hovered} "
+                                                x-bind:class="{'text-yellow-400': !hovered && !isToday, 'text-white': (hovered || isToday) && isCurrentMonth }"
                                                 class="h-2 w-4 fill-current text-yellow-400"/>
                                         </span>
                                     @endif
