@@ -2,8 +2,8 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use Carbon\Carbon;
+use Livewire\Component;
 
 class Calendar extends Component
 {
@@ -12,15 +12,17 @@ class Calendar extends Component
     public $showMonthPicker = false;
     public $monthPickerDate;
     public $viewName = 'livewire.calendar';
-
+    public $user;
     // For future task functionality
-    public $tasksData = []; // Will contain dates with tasks
+    public $workoutSessionDays = [];
 
     public function mount()
     {
         $this->selectedDate = Carbon::now();
         $this->currentWeekStart = Carbon::now()->startOfWeek(Carbon::MONDAY);
         $this->monthPickerDate = Carbon::now()->startOfMonth();
+        $this->user = request()->user();
+        $this->workoutSessionDays = $this->user->workoutSessions->pluck('date')->toArray();
     }
 
     public function previousWeek()
@@ -102,11 +104,12 @@ class Calendar extends Component
                     'isCurrentMonth' => $current->month === $this->monthPickerDate->month,
                     'isToday' => $current->isToday(),
                     'isSelected' => $current->isSameDay($this->selectedDate),
-                    'hasTask' => $this->hasTask($current), // For future use
+                    'hasWorkoutSession' => $this->hasWorkoutSession($current), // For future use
                 ];
                 $current->addDay();
             }
             $days[] = $weekDays;
+
 
             // Stop if we've passed the end of month and filled at least 4 weeks
             if ($week >= 3 && $current->gt($endOfMonth)) {
@@ -118,9 +121,9 @@ class Calendar extends Component
     }
 
     // For future task functionality
-    private function hasTask($date)
+    public function hasWorkoutSession($date)
     {
-        return in_array($date->format('Y-m-d'), $this->tasksData);
+        return in_array($date->format('Y-m-d'), $this->workoutSessionDays);
     }
 
 
