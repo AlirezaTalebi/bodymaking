@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Exercise;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class ExerciseFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            'type' => fake()->randomElement(Exercise::getAvailableExerciseTypes()),
+            'equipment' => fake()->name(),
         ];
     }
 }

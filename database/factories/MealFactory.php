@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Meal;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,14 @@ class MealFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'date' => fake()->date(),
+            'time' => fake()->time(),
+            'meal_type' => fake()->randomElement(Meal::getAvailableMealTypes()),
+            'food_name' => fake()->name(),
+            'calories' => fake()->numberBetween(10, 1500),
+            'protein_g' => fake()->numberBetween(1, 100),
+            'fat_g' => fake()->numberBetween(1, 100),
+            'carbs_g' => fake()->numberBetween(1, 100),
         ];
     }
 }
