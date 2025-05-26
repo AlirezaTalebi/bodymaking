@@ -9,4 +9,11 @@ class Meal extends Model
 {
     /** @use HasFactory<\Database\Factories\MealFactory> */
     use HasFactory;
+
+    public static function getAvailableMealTypes(): array
+    {
+        return [
+            ['breakfast', 'lunch', 'dinner', 'snack', 'other']
+        ];
+    }
 }

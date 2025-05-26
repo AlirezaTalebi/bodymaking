@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('workout_sets', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('workout_sessions_id');
+            $table->foreign('workout_sessions_id')->references('id')->on('workout_sessions');
+            $table->unsignedBigInteger('exercises_id');
+            $table->foreign('exercises_id')->references('id')->on('exercises');
+            $table->integer('reps');
+            $table->integer('weight');
+            $table->integer('set_number');
+            $table->integer('duration_sec')->nullable(); // for cardio
             $table->timestamps();
         });
     }

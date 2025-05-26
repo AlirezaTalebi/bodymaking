@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->date('date');
+            $table->time('time');
+            $table->enum('meal_type', \App\Models\Meal::getAvailableMealTypes())->default('other');
+            $table->string('food_name');
+            $table->integer('calories')->nullable();
+            $table->integer('protein_g')->nullable();
+            $table->integer('fat_g')->nullable();
+            $table->integer('carbs_g')->nullable();
             $table->timestamps();
         });
     }

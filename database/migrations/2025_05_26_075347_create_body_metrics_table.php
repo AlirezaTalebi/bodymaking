@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('body_metrics', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->date('date');
+            $table->integer('weight');
+            $table->integer('body_fat')->nullable(); // can be in %
+            $table->integer('muscle_mass')->nullable();
             $table->timestamps();
         });
     }
