@@ -19,7 +19,6 @@ class WorkoutSetFactory extends Factory
     {
         $temp = fake()->randomElement(['c', 'w', 'w']);
         $array = [
-//            'workout_session_id' => WorkoutSessionFactory::create(),
             'exercise_id' => Exercise::factory(),
         ];
 

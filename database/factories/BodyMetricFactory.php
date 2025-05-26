@@ -19,7 +19,7 @@ class BodyMetricFactory extends Factory
     public function definition(): array
     {
         return [
-            'date' => fake()->date(),
+            'date' => now()->sub(random_int(1, 100), 'days')->format('Y-m-d'),
             'body_fat' => fake()->numberBetween(1, 80),
             'muscle_mass' => fake()->numberBetween(1, 80),
         ];

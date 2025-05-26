@@ -17,7 +17,7 @@ class CaloryFactory extends Factory
     public function definition(): array
     {
         return [
-            'date' => fake()->date(),
+            'date' => now()->sub(random_int(1, 100), 'days')->format('Y-m-d'),
             'calories_eaten' => fake()->numberBetween(1, 100),
             'calories_burned' => fake()->numberBetween(1, 3000),
             'calories_left' => fake()->numberBetween(1, 3000),
