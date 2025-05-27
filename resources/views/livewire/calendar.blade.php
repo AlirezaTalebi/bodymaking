@@ -1,3 +1,7 @@
+<?php
+/** @var \App\Livewire\Calendar $this */
+?>
+
 <div class="calendar-wrapper max-w-4xl mx-auto text-white">
     <!-- Week Navigation Bar -->
     <div
@@ -9,7 +13,7 @@
         </button>
 
         <!-- Week Days -->
-        <div class="calendar-week-days flex gap-1 overflow-x-auto sm:overflow-visible flex-1 justify-center">
+        <div class="calendar-week-days flex gap-2 overflow-x-auto sm:overflow-visible flex-1 justify-center">
             @foreach($this->weekDays as $index => $day)
                 <button
                     x-data="{
