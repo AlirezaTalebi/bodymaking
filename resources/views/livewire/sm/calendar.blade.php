@@ -87,7 +87,8 @@
                                     x-data="{
                                 hovered: false,
                                 isToday: {{ json_encode($dayData['isToday']) }},
-                                isCurrentMonth: {{ json_encode($dayData['isCurrentMonth']) }}
+                                isCurrentMonth: {{ json_encode($dayData['isCurrentMonth']) }},
+                                isSelected: {{ json_encode($dayData['isSelected'])}}
                                  }"
                                     x-on:mouseenter="hovered = true"
                                     x-on:mouseleave="hovered = false"
@@ -100,7 +101,7 @@
                                     @if($dayData['hasWorkoutSession'])
                                         <span class="absolute bottom-0.5">
                                             <x-application-logo
-                                                x-bind:class="{'text-yellow-400': !hovered && !isToday, 'text-zinc-900': (hovered && isToday) && isCurrentMonth, 'text-white': (!isToday && hovered) && !isCurrentMonth }"
+                                                x-bind:class="{'text-yellow-400': (!hovered && !isToday) && !isSelected, 'text-zinc-900': (hovered && isToday) && isCurrentMonth, 'text-white': (!isToday && hovered) && !isCurrentMonth }"
                                                 class="h-1.5 w-3 fill-current text-yellow-400"/>
                                         </span>
                                     @endif
