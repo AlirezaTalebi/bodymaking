@@ -1,3 +1,7 @@
+<?php
+/** @var \App\Livewire\Calendar $this */
+?>
+
 <div class="calendar-wrapper rounded-lg p-2 w-full max-w-xl mx-auto text-white sm:hidden">
     <!-- Week Navigation -->
     <div class="space-y-4">
