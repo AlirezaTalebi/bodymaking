@@ -15,7 +15,6 @@
             'w-64': sidebarOpen,
             'w-64 lg:w-20': !sidebarOpen
         }"
-        x-cloak
         class="fixed lg:relative h-full bg-gradient-to-b from-zinc-900 to-gray-800 text-white transition-all duration-300 ease-in-out shadow-xl z-30"
     >
         {{-- Logo section --}}

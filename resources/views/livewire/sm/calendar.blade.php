@@ -115,7 +115,7 @@
                 <div class="mt-4 text-right">
                     <button wire:click="toggleMonthPicker"
                             class="px-3 py-1.5 bg-zinc-700 text-white hover:bg-zinc-600 rounded-md text-sm">
-                        Close
+                        {{ __('general.close') }}
                     </button>
                 </div>
             </div>
