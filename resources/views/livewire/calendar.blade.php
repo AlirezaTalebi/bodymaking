@@ -114,11 +114,14 @@
                 </div>
 
                 <!-- Close -->
-                <div class="mt-6 text-right">
-                    <button wire:click="toggleMonthPicker"
-                            class="px-4 py-2 bg-zinc-700 text-white hover:bg-zinc-600 rounded-md">
-                        Close
-                    </button>
+                <div class="mt-6 flex justify-between items-center">
+                    <span class="text-zinc-400 text-left" wire:init="countWorkoutSessionCurrentMonth">{{ __('general.workout_sessions') }}: {{ $workoutSessions }}</span>
+                    <div class="flex justify-end">
+                        <button wire:click="toggleMonthPicker"
+                                class="px-4 py-2 bg-zinc-700 text-white hover:bg-zinc-600 rounded-md">
+                            {{ __('general.close') }}
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

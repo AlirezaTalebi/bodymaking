@@ -13,11 +13,9 @@
             <div class="flex justify-center gap-2">
                 <div
                     class="calendar-body sm:flex flex-wrap sm:flex-nowrap items-center justify-center sm:justify-between gap-3 mb-6 bg-zinc-800 rounded-lg p-3 border border-zinc-700">
-                    @if(!empty($user_data))
-                        Has user data
-                    @elseif(empty($user_data))
-                        Has no data
-                    @endif
+
+                    @include('workout-sessions.index', ['workoutSessions' => request()->user()->workoutSessions()->get()])
+
                 </div>
             </div>
 

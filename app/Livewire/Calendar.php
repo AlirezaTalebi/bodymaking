@@ -13,6 +13,7 @@ class Calendar extends Component
     public $monthPickerDate;
     public $viewName = 'livewire.calendar';
     public $user;
+    public $workoutSessions = 0;
     // For future task functionality
     public $workoutSessionDays = [];
 
@@ -23,6 +24,7 @@ class Calendar extends Component
         $this->monthPickerDate = Carbon::now()->startOfMonth();
         $this->user = request()->user();
         $this->workoutSessionDays = $this->user->workoutSessions->pluck('date')->toArray();
+        $this->countWorkoutSessionCurrentMonth();
     }
 
     public function previousWeek()
@@ -48,6 +50,7 @@ class Calendar extends Component
         if ($this->showMonthPicker) {
             $this->monthPickerDate = $this->selectedDate->copy()->startOfMonth();
         }
+        $this->countWorkoutSessionCurrentMonth();
     }
 
     public function selectMonthDay($day)
@@ -61,11 +64,13 @@ class Calendar extends Component
     public function previousMonth()
     {
         $this->monthPickerDate = $this->monthPickerDate->copy()->subMonth();
+        $this->countWorkoutSessionCurrentMonth();
     }
 
     public function nextMonth()
     {
         $this->monthPickerDate = $this->monthPickerDate->copy()->addMonth();
+        $this->countWorkoutSessionCurrentMonth();
     }
 
     private function updateSelectedDate()
@@ -124,6 +129,18 @@ class Calendar extends Component
     public function hasWorkoutSession($date)
     {
         return in_array($date->format('Y-m-d'), $this->workoutSessionDays);
+    }
+
+    public function countWorkoutSessionCurrentMonth(): int
+    {
+        $this->workoutSessions = 0;
+        foreach ($this->workoutSessionDays as $day) {
+            if($this->monthPickerDate->format('Y-m') === \carbon\carbon::parse($day)->format('Y-m')){
+                $this->workoutSessions++;
+            }
+        }
+
+        return $this->workoutSessions;
     }
 
 
