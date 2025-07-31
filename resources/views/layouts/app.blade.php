@@ -20,7 +20,7 @@
       class="font-sans antialiased bg-gradient-to-tr from-gray-950 to-zinc-900 text-gray-100">
 
 <div class="min-h-screen flex flex-col">
-    <div class="flex flex-1 overflow-hidden">
+    <div class="flex flex-1 overflow-hidden" x-cloak>
         <!-- Sidebar -->
         @include('layouts.sidebar')
 

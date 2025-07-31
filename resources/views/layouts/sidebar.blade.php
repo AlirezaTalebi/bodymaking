@@ -42,45 +42,67 @@
                 {{-- Dashboard --}}
                 <li>
                     <a href="{{ route('dashboard') }}"
-                       class="flex items-center px-4 py-3 transition-all duration-200
-                       {{ request()->routeIs('dashboard') ? 'bg-yellow-400 bg-opacity-20 border-r-4 border-yellow-400' : 'hover:bg-yellow-400 hover:bg-opacity-10' }}"
-                       x-bind:class="{ 'justify-center': !sidebarOpen }"
+                       class="w-full flex items-center px-4 py-3 text-left transition-all duration-200"
+                       :class="sidebarOpen ? 'justify-start' : 'justify-center'"
+                        @class([
+                            'hover:bg-yellow-400 hover:bg-opacity-10',
+                            'bg-yellow-400 bg-opacity-20 border-r-4 border-yellow-400' => request()->routeIs('dashboard')
+                        ])
                     >
-                        <i class="fas fa-home text-yellow-400 text-lg"></i>
-                        <span x-show="sidebarOpen" class="ml-4 text-yellow-300">{{ __('general.dashboard') }}</span>
+                        <i class="fas fa-home text-yellow-400 text-lg w-4 h-7"></i>
+                        <span
+                            :class="sidebarOpen ? 'opacity-100 ml-4' : 'opacity-0 w-0 ml-0'"
+                            class="text-yellow-300 transition-all duration-300 overflow-hidden whitespace-nowrap"
+                        >
+                    {{ __('general.dashboard') }}
+                </span>
                     </a>
                 </li>
 
                 {{-- Profile --}}
                 <li>
-                    <a
-                            href="{{ route('profile.edit') }}"
-                            @click="sidebarOpen = false"
-                            class="flex items-center px-4 py-3 transition-all duration-200
-        {{ request()->routeIs('profile.edit') ? 'bg-yellow-400 bg-opacity-20 border-r-4 border-yellow-400' : 'hover:bg-yellow-400 hover:bg-opacity-10' }}"
-                            x-bind:class="{ 'justify-center': !sidebarOpen }"
+                    <a href="{{ route('profile.edit') }}"
+                       @click="sidebarOpen = false"
+                       class="w-full flex items-center px-4 py-3 text-left transition-all duration-200"
+                       :class="sidebarOpen ? 'justify-start' : 'justify-center'"
+                        @class([
+                            'hover:bg-yellow-400 hover:bg-opacity-10',
+                            'bg-yellow-400 bg-opacity-20 border-r-4 border-yellow-400' => request()->routeIs('profile.edit')
+                        ])
                     >
-                        <i class="fas fa-user text-yellow-400 text-lg"></i>
-                        <span x-show="sidebarOpen" class="ml-4 text-yellow-300">{{ __('general.profile') }}</span>
+                        <i class="fas fa-user text-yellow-400 text-lg w-4 h-7"></i>
+                        <span
+                            :class="sidebarOpen ? 'opacity-100 ml-4' : 'opacity-0 w-0 ml-0'"
+                            class="text-yellow-300 transition-all duration-300 overflow-hidden whitespace-nowrap"
+                        >
+                    {{ __('general.profile') }}
+                </span>
                     </a>
-
                 </li>
 
                 {{-- Logout --}}
                 <li>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button
-                            type="submit"
-                            class="w-full flex items-center px-4 py-3 transition-all duration-200 hover:bg-yellow-400 hover:bg-opacity-10 text-left"
-                            x-bind:class="{ 'justify-center': !sidebarOpen }"
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                       class="w-full flex items-center px-4 py-3 text-left transition-all duration-200"
+                       :class="sidebarOpen ? 'justify-start' : 'justify-center'"
+                       class="hover:bg-yellow-400 hover:bg-opacity-10"
+                    >
+                        <i class="fas fa-sign-out-alt text-yellow-400 text-lg w-4 h-7"></i>
+                        <span
+                            :class="sidebarOpen ? 'opacity-100 ml-4' : 'opacity-0 w-0 ml-0'"
+                            class="text-yellow-300 transition-all duration-300 overflow-hidden whitespace-nowrap"
                         >
-                            <i class="fas fa-sign-out-alt text-yellow-400 text-lg"></i>
-                            <span x-show="sidebarOpen" class="ml-4 text-yellow-300">{{ __('general.logout') }}</span>
-                        </button>
+                    {{ __('general.logout') }}
+                </span>
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                        @csrf
                     </form>
                 </li>
             </ul>
         </div>
+
     </div>
 </div>
